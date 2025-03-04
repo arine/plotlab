@@ -70,8 +70,8 @@ export class WaterfallPlot {
     }
     // Calculate range
     let currValue = this.options.baseValue || 0;
-    let minValue = currValue + (data[0][0] as number);
-    let maxValue = currValue + (data[0][0] as number);
+    let minValue = Math.min(currValue, currValue + (data[0][0] as number));
+    let maxValue = Math.max(currValue, currValue + (data[0][0] as number));
     (this.options.reverse ? reversedData : data).forEach((datapoint) => {
       currValue += datapoint[0] as number;
       minValue = Math.min(minValue, currValue);
